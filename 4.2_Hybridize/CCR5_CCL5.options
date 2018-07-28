@@ -1,0 +1,38 @@
+# Options file for RosettaCM
+
+
+##Options to be changed
+#inputs 
+-in:file:spanfile CCR5_CCL5.span										#### path to span file
+-in:file:fasta CCR5_CCL5_sulfated.fasta			      					#### path to fasta of desired sequence
+-parser:protocol CCR5_CCL5.xml											#### path to XML script
+-score:weights stage3_rlx_membrane.wts								#### path to membrane weights file
+#output options
+-out:path:all ../output												#### path to put output files
+-out:file:silent CCR5_CCL5.silent							#### Output a compressed file instead of seperate PDBs
+-out:file:silent_struct_type binary									#### specifies silent file (if used) to be in type 'binary'
+-out:file:scorefile score_CCR5_CCL5.out					#### Output a score file with given name
+#miscellaneous 
+-nstruct 1														#### specifies number of models to be created
+-out:level 100														#### level of detail in the log, change to 400 for debug 
+-include_patches patches/tyr_sulfated.txt							#### include patch for sulfated tyrosine residues
+
+
+
+
+##Advanced options
+-membrane:no_interpolate_Mpair
+-membrane:Menv_penalties
+-rg_reweight .1
+-relax:minimize_bond_angles
+-relax:minimize_bond_lengths
+-relax:jump_move true
+-default_max_cycles 200
+-relax:min_type lbfgs_armijo_nonmonotone
+-use_bicubic_interpolation
+-hybridize:stage1_probability 1.0
+-sog_upper_bound 15
+-chemical:exclude_patches LowerDNA  UpperDNA Cterm_amidation SpecialRotamer VirtualBB ShoveBB VirtualDNAPhosphate VirtualNTerm CTermConnect sc_orbitals pro_hydroxylated_case1 pro_hydroxylated_case2 ser_phosphorylated thr_phosphorylated  tyr_phosphorylated tyr_sulfated lys_dimethylated lys_monomethylated  lys_trimethylated lys_acetylated glu_carboxylated cys_acetylated tyr_diiodinated N_acetylated C_methylamidated MethylatedProteinCterm
+-linmem_ig 10
+
+

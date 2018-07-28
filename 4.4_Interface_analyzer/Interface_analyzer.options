@@ -1,0 +1,19 @@
+#Interface analyzer options
+ 
+##Options to change
+-in:file:silent CCR5_CCL5.silent
+-out:file:score_only interface_score_CCR5_CCL5.out           #Save all the output into a score file with this name
+-in:file:spanfile CCR5_CCL5.span                       #Path to span file
+
+##Advnaced Options
+-compute_packstat true                                  #this will actually run rosetta's packstat calculation (slow)
+-packstat::oversample 100                               #recommended to oversample to reduce variance.
+-tracer_data_print false                                #make a score file with all the important info instead of just printing to the terminal
+-pack_input false                                       #will not relax the input interface residues (good if you have already minimized/packed your structure)
+-pack_separated false                                   #will also not pack the monomers to calculated dG bind.
+-add_regular_scores_to_scorefile true                   #will run the rest of rosetta's score function on your complex using score12
+-atomic_burial_cutoff 0.01                              #This is set to help rosetta identify buried polar atoms properly
+-pose_metrics::interface_cutoff 8.0                     # this defines how far away a CBeta atom can be from the other chain to be considered an interface residue
+-score:weights membrane_highres_Menv_smooth
+-score:set_weights cart_bonded 0.5
+-score:set_weights pro_close 0

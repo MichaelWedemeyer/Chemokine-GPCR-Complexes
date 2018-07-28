@@ -1,0 +1,5 @@
+1. Read through the python script "3D_Metrics_Example_Script.py"
+2. Change the script to match your file path.
+3. Change the residue numbers to match your models conserved resdiues (see text)
+4. Open script in Chimera 1.12
+	The program will loop through each PDB in the file and calcualte these 3D metrics. The program will close when finished. Note: this is an example script and not optimized for speed, so large numbers of PDBs run at once are not recommended.
